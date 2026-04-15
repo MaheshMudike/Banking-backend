@@ -31,3 +31,14 @@
 /Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/obj/Debug/net8.0/Banking.Api.pdb
 /Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/obj/Debug/net8.0/Banking.Api.genruntimeconfig.cache
 /Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/obj/Debug/net8.0/ref/Banking.Api.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/obj/Debug/net8.0/Banking.Api.sourcelink.json
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/appsetting.json
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.Bcl.TimeProvider.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/Mahesh.Mudike/Desktop/banking-app/backend-app/Banking.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
