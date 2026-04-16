@@ -24,6 +24,6 @@ public class AccountRepository : IAccountRepository
 
     public void UpdateAccount(Account account)
     {
-        // In-memory DB updates automatically
+        // In-memory DB updates will happen automatically
     }
 }
