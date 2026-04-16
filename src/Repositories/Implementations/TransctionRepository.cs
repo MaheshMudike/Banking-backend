@@ -29,4 +29,12 @@ public class TransactionRepository : ITransactionRepository
         _db.Transactions.Add(transaction);
     }
 
+    public IEnumerable<Transaction> GetAllTransactionsForAccount(int accountId)
+    {
+        return _db.Transactions
+            .Where(t => t.AccountId == accountId)
+            .OrderByDescending(t => t.Date);
+    }
+
+
 }

@@ -6,4 +6,5 @@ public interface ITransactionRepository
 {
     IEnumerable<Transaction> GetTransactions(int accountId);
     void AddTransaction(Transaction transaction);
+    IEnumerable<Transaction> GetAllTransactionsForAccount(int accountId);
 }

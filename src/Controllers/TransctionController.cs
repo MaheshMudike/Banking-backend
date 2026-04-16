@@ -22,4 +22,16 @@ public class TransactionController : ControllerBase
         var transactions = _transactionService.GetRecentTransactions(accountId);
         return Ok(transactions);
     }
+
+    [HttpGet("{accountId}/filter")]
+    public IActionResult FilterTransactions(
+        int accountId,
+        [FromQuery] string? type,
+        [FromQuery] DateTime? from,
+        [FromQuery] DateTime? to)
+    {
+        var transactions = _transactionService.FilterTransactions(accountId, type, from, to);
+        return Ok(transactions);
+    }
+
 }

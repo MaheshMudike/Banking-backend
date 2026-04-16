@@ -7,6 +7,7 @@ public class InMemoryDb
     public List<User> Users { get; set; } = new();
     public List<Account> Accounts { get; set; } = new();
     public List<Transaction> Transactions { get; set; } = new();
+    public List<Beneficiary> Beneficiaries { get; set; } = new();
 
     public InMemoryDb()
     {
@@ -94,6 +95,26 @@ public class InMemoryDb
             Date = DateTime.Now.AddDays(-1),
             ReferenceNumber = Guid.NewGuid().ToString(),
             Description = "Bonus Credit"
+        });
+
+
+       //Existing Beneficiaries
+        Beneficiaries.Add(new Beneficiary
+        {
+            Id = 1,
+            UserId = 1,
+            Name = "John Doe",
+            AccountNumber = "ACC2001",
+            Nickname = "Friend John"
+        });
+
+        Beneficiaries.Add(new Beneficiary
+        {
+            Id = 2,
+            UserId = 1,
+            Name = "Sara Smith",
+            AccountNumber = "ACC3001",
+            Nickname = "Sister Sara"
         });
     }
 }
