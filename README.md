@@ -37,7 +37,10 @@ cd backend-app  Banking.Api
 dotnet restore
 
 ## Build
-Run `dotnet run` to run the project
+Run `dotnet run --project Banking.Api` to run the project
+
+## Test cases
+Run `dotnet test` to run test cases the project
 
 ## Author 
 Mahesh Mudike
