@@ -24,6 +24,6 @@ public class AccountRepository : IAccountRepository
 
     public void UpdateAccount(Account account)
     {
-        // In-memory DB updates automatically because it's a reference type
+        // In-memory DB updates automatically
     }
 }
