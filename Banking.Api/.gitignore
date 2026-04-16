@@ -1,9 +1,0 @@
-bin/
-obj/
-*.user
-*.rsuser
-*.log
-*.db
-*.sqlite
-.vscode/
-.DS_Store
