@@ -16,57 +16,67 @@ public class FundTransferService : IFundTransferService
         _transactionRepo = transactionRepo;
     }
 
-    public bool Transfer(int fromAccountId, int toAccountId, decimal amount, out string message, out string? reference)
+    public bool Transfer(int fromAccountId, int? toAccountId, string? toAccountNumber, decimal amount, out string message, out string? reference)
     {
         reference = null;
 
-        // 1. Amount must be > 0
+        // 1. Validate amount
         if (amount <= 0)
         {
             message = "Amount must be greater than zero.";
             return false;
         }
 
-         if (amount == null)
-        {
-            message = "Amount must be greater than zero.";
-            return false;
-        }
-
-        // 2. Cannot transfer to same account
-        if (fromAccountId == toAccountId)
-        {
-            message = "Cannot transfer to the same account.";
-            return false;
-        }
-
-        // 3. Max transfer limit
         if (amount > 25000)
         {
             message = "Maximum transfer amount is 25,000 AED.";
             return false;
         }
 
+        // 2. Get sender account
         var from = _accountRepo.GetAccount(fromAccountId);
-        var to = _accountRepo.GetAccount(toAccountId);
-
-        if (from == null || to == null)
+        if (from == null)
         {
-            message = "Invalid account.";
+            message = "Invalid sender account.";
             return false;
         }
 
-        // 4. Amount must be <= available balance
+        // 3. Determine receiver account
+        Account? to = null;
+
+        if (toAccountId.HasValue)
+        {
+            to = _accountRepo.GetAccount(toAccountId.Value);
+        }
+        else if (!string.IsNullOrEmpty(toAccountNumber))
+        {
+            to = _accountRepo.GetAccountByNumber(toAccountNumber);
+        }
+
+        if (to == null)
+        {
+            message = "Invalid beneficiary or account.";
+            return false;
+        }
+
+        // 4. Prevent sending to same account
+        if (from.Id == to.Id)
+        {
+            message = "Cannot transfer to the same account.";
+            return false;
+        }
+
+        // 5. Check balance
         if (from.Balance < amount)
         {
             message = "Insufficient balance.";
             return false;
         }
 
-        // 5. Generate a single reference number for both transactions
-        reference = GenerateReference();
+        // 6. Generate reference
+        reference = "TXN-" + Guid.NewGuid().ToString("N")[..10].ToUpper();
 
-        // 6. Debit sender
+        // 7. Debit sender
         from.Balance -= amount;
         _transactionRepo.AddTransaction(new Transaction
         {
@@ -78,7 +88,7 @@ public class FundTransferService : IFundTransferService
             Description = $"Transfer to {to.AccountNumber}"
         });
 
-        // 7. Credit receiver
+        // 8. Credit receiver
         to.Balance += amount;
         _transactionRepo.AddTransaction(new Transaction
         {
@@ -93,6 +103,7 @@ public class FundTransferService : IFundTransferService
         message = "Transfer successful.";
         return true;
     }
+
 
     private string GenerateReference()
     {

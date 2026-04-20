@@ -7,9 +7,14 @@ public class BeneficiaryService : IBeneficiaryService
 {
     private readonly IBeneficiaryRepository _beneficiaryRepo;
 
-    public BeneficiaryService(IBeneficiaryRepository beneficiaryRepo)
+    private readonly IAccountRepository _accountRepo;
+
+
+    public BeneficiaryService(IBeneficiaryRepository beneficiaryRepo, IAccountRepository accountRepo)
     {
         _beneficiaryRepo = beneficiaryRepo;
+        _accountRepo = accountRepo;
+
     }
 
     public IEnumerable<Beneficiary> GetBeneficiaries(int userId)
@@ -17,7 +22,7 @@ public class BeneficiaryService : IBeneficiaryService
         return _beneficiaryRepo.GetBeneficiaries(userId);
     }
 
-    public Beneficiary AddBeneficiary(int userId, string name, string accountNumber, string nickname)
+   public Beneficiary AddBeneficiary(int userId, string name, string accountNumber, string nickname)
     {
         var beneficiary = new Beneficiary
         {
@@ -27,7 +32,11 @@ public class BeneficiaryService : IBeneficiaryService
             Nickname = nickname
         };
 
-        return _beneficiaryRepo.AddBeneficiary(beneficiary);
+        var created = _beneficiaryRepo.AddBeneficiary(beneficiary);
+        
+         _accountRepo.AddExternalAccount(accountNumber);
+
+        return created;
     }
 
     public void DeleteBeneficiary(int userId, int beneficiaryId)

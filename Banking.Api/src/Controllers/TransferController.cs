@@ -22,6 +22,7 @@ public class TransferController : ControllerBase
         var success = _transferService.Transfer(
             request.FromAccountId,
             request.ToAccountId,
+            request.ToAccountNumber,
             request.Amount,
             out string message,
             out string? reference
@@ -38,6 +39,7 @@ public class TransferController : ControllerBase
 public class TransferRequest
 {
     public int FromAccountId { get; set; }
-    public int ToAccountId { get; set; }
+    public int? ToAccountId { get; set; }         
+    public string? ToAccountNumber { get; set; } 
     public decimal Amount { get; set; }
 }

@@ -17,6 +17,12 @@ public class AccountService : IAccountService
         return _accountRepo.GetAccountsByUser(userId);
     }
 
+    public IEnumerable<object> GetCreditAccounts(int userId)
+    {
+        return _accountRepo.GetCreditAccounts(userId);
+    }
+
+
     public Account? GetAccount(int accountId)
     {
         return _accountRepo.GetAccount(accountId);

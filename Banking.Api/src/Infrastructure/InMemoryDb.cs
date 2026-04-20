@@ -11,14 +11,19 @@ public class InMemoryDb
 
     public InMemoryDb()
     {
-        // Seed Users
-        Users.Add(new User { Id = 1, Username = "mahesh", Password = "1234" });
+        // Add Users
+        Users.Add(new User { Id = 1, Username = "mahesh", Password = "999@Abcd" });
 
-        // Seed Accounts
+        // Add Accounts
         Accounts.Add(new Account { Id = 1, UserId = 1, AccountNumber = "ACC1001", Balance = 5000 });
         Accounts.Add(new Account { Id = 2, UserId = 1, AccountNumber = "ACC1002", Balance = 12000 });
 
-        // Seed Transactions for Account 1 (5 transactions)
+        // Beneficiary accounts (external)
+        Accounts.Add(new Account { Id = 3, UserId = 0, AccountNumber = "ACC2001", Balance = 15000 });
+        Accounts.Add(new Account { Id = 4, UserId = 0, AccountNumber = "ACC3001", Balance = 8000 });
+
+
+        // Add Transactions for Account 1 (5 transactions)
         Transactions.Add(new Transaction
         {
             Id = 1,
@@ -74,7 +79,7 @@ public class InMemoryDb
             Description = "Refund Received"
         });
 
-        // Seed Transactions for Account 2 (2 transactions)
+        // Add Transactions for Account 2 (2 transactions)
         Transactions.Add(new Transaction
         {
             Id = 6,
@@ -103,16 +108,16 @@ public class InMemoryDb
         {
             Id = 1,
             UserId = 1,
-            Name = "John Doe",
+            Name = "Mohhamed Ali",
             AccountNumber = "ACC2001",
-            Nickname = "Friend John"
+            Nickname = "Friend Ali"
         });
 
         Beneficiaries.Add(new Beneficiary
         {
             Id = 2,
             UserId = 1,
-            Name = "Sara Smith",
+            Name = "Sara Patel",
             AccountNumber = "ACC3001",
             Nickname = "Sister Sara"
         });

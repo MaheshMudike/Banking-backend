@@ -26,4 +26,22 @@ public class AccountController : ControllerBase
 
         return Ok(accounts);
     }
+
+
+    [HttpGet("debit")]
+    public IActionResult GetDebitAccounts()
+    {
+        var userId = int.Parse(User.FindFirst("userId")!.Value);
+        var accounts = _accountService.GetUserAccounts(userId);
+        return Ok(accounts);
+    }
+
+    [HttpGet("credit")]
+    public IActionResult GetCreditAccounts()
+    {
+        var userId = int.Parse(User.FindFirst("userId")!.Value);
+        var accounts = _accountService.GetCreditAccounts(userId);
+        return Ok(accounts);
+    }
+
 }
